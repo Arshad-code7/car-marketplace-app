@@ -9,11 +9,19 @@
 <body>
     <div id="card" class="bg-gray-100 h-full flex items-center justify-center transition-all duration-300">
         <div class="fle bg-white p-6 flex-col gap-4 shadow-lg rounded-xl max-w-fit">
-            <h1 class="text-[32px] text-center font-bold">Car Showcase</h1>
-            <div id="cars-container" class="flex justify-between object-cover gap-10" data-index="${index}">
-                
+            <h1 class="text-3xl font-bold text-center my-6">
+                🚗 Car Marketplace
+            </h1>
+            <input 
+                type="text" 
+                id="search"
+                placeholder="Search cars..."
+                class="border px-4 py-2 rounded-lg w-full max-w-md block mx-auto mb-6"
+            />
+            <div id="cars-container" class="flex mb-5 justify-between object-cover gap-10" data-index="${index}">
+               
             </div>
-            <div class="flex justify-center mt-6">
+            <div class="flex flex-wrap gap-4 justify-center">
                 <div id="selected-car" class="bg-white p-6 rounded-xl shadow-lg w-80 space-y-2">
                     <p class="text-[28px] mb-3 text-center font-bold">Details</p>
                     <img id="d-image" class="w-full h-40 object-cover rounded-lg">
