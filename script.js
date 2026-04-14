@@ -74,7 +74,7 @@ function renderCars(filteredCars) {
 
         allCarCard.innerHTML += `
             <div onclick="selectCar(${originalIndex})"
-            class="bg-white shadow-lg rounded-xl p-4 w-60 cursor-pointer hover:scale-105 transition">
+            class="bg-white shadow-lg rounded-xl p-4 w-full sm:w-60 cursor-pointer hover:scale-105 transition">
                 
                 <img src="${carItem.image}" 
                 class="w-full h-40 object-cover rounded-lg mb-3">
