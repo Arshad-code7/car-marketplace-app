@@ -27,6 +27,16 @@ const car = [{
         priceUsd : 11900,
         finalPrice : 0,
         savedPrice : 0 
+    },
+    {
+        
+        image: "https://imgcdn.zigwheels.ph/large/gallery/color/35/1806/audi-r8-v10-plus-color-835231.jpg",
+        make: "Audi",
+        model: "R8",
+        year: 2026,
+        color: "Blue",
+        priceUsd: 150000
+
     }
 ];
 
@@ -51,37 +61,45 @@ const cartCount = document.getElementById("cart-count");
 const cartTotal = document.getElementById("cart-total");
 const cartItems = document.getElementById("cart-items");
 const toast = document.getElementById("toast");
+const searchInput = document.getElementById("search");
 
+renderCars(car);
 selectCar(0);
 
-car.forEach((car,index) => {
-    allCarCard.innerHTML += `
-        <div onclick="selectCar(${index})"
-        class="bg-white shadow-lg rounded-xl p-4 w-60 cursor-pointer hover:scale-105 hover:shadow-2xl transition duration-300">
-            
-            <img src="${car.image}" 
-            class="w-full h-40 object-cover rounded-lg mb-3">
+function renderCars(filteredCars) {
+    allCarCard.innerHTML = "";
 
-            <h2 class="text-lg font-bold">
-                ${car.make} ${car.model}
-            </h2>
+    filteredCars.forEach((carItem) => {
+        const originalIndex = car.findIndex(c => c.model === carItem.model);
 
-            <p class="text-gray-600">
-                Year: ${car.year}
-            </p>
+        allCarCard.innerHTML += `
+            <div onclick="selectCar(${originalIndex})"
+            class="bg-white shadow-lg rounded-xl p-4 w-60 cursor-pointer hover:scale-105 transition">
+                
+                <img src="${carItem.image}" 
+                class="w-full h-40 object-cover rounded-lg mb-3">
 
-            <p class="text-gray-800 font-semibold">
-                $${car.priceUsd}
-            </p>
+                <h2 class="text-lg font-bold">
+                    ${carItem.make} ${carItem.model}
+                </h2>
 
-            <button onclick="addToCart(${index}); event.stopPropagation()"
-            class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg transition hover:scale-105 active:scale-95">
-                Add to Cart
-            </button>
+                <p class="text-gray-600">
+                    Year: ${carItem.year}
+                </p>
 
-        </div>
-    `;
-});
+                <p class="text-gray-800 font-semibold">
+                    $${carItem.priceUsd}
+                </p>
+
+                <button onclick="addToCart(${originalIndex}); event.stopPropagation()"
+                class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg transition">
+                    Add to Cart
+                </button>
+
+            </div>
+        `;
+    });
+}
 
 function selectCar(index) {
     const selected = car[index];
@@ -259,6 +277,14 @@ clearCartBtn.addEventListener("click", () => {
     updateCartUI();     // refresh UI
 });
 
+searchInput.addEventListener("input", () => {
+    const value = searchInput.value.toLowerCase();
 
+    const filtered = car.filter(item => 
+        item.make.toLowerCase().includes(value) ||
+        item.model.toLowerCase().includes(value)
+    );
 
+    renderCars(filtered);
+});
 
