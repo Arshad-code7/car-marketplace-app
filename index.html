@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+<body>
+    <div id="card" class="bg-gray-100 h-full flex items-center justify-center transition-all duration-300">
+        <div class="fle bg-white p-6 flex-col gap-4 shadow-lg rounded-xl max-w-fit">
+            <h1 class="text-[32px] text-center font-bold">Car Showcase</h1>
+            <div id="cars-container" class="flex justify-between object-cover gap-10" data-index="${index}">
+                
+            </div>
+            <div class="flex justify-center mt-6">
+                <div id="selected-car" class="bg-white p-6 rounded-xl shadow-lg w-80 space-y-2">
+                    <p class="text-[28px] mb-3 text-center font-bold">Details</p>
+                    <img id="d-image" class="w-full h-40 object-cover rounded-lg">
+                    <p id="d-name" class="border-b pb-2 font-semibold"></p>
+                    <p id="d-model" class="border-b pb-2 font-semibold"></p>
+                    <p id="d-year" class="border-b pb-2 font-semibold"></p>
+                    <p id="d-color" class="border-b pb-2 font-semibold"></p>
+                    <p id="d-price" class="font-semibold"></p>
+                    <input 
+                        type="number" 
+                        id="discount-input"
+                        placeholder="Enter discount %"
+                        class="w-full border px-3 py-1 rounded-md"
+                    />
+
+                    <button 
+                        id="apply-btn"
+                        class="w-full cursor-pointer bg-blue-600 text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition"
+                     >
+                        Apply Discount
+                    </button>
+                    <p id="d-final" class="font-semibold text-green-600"></p>
+                    <p id="d-saved" class="font-semibold text-blue-600"></p>
+                    <p id="error-msg" class="text-red-500"></p>
+                    <h2 class="text-xl font-bold mt-6">🛒 Your Cart</h2>
+                    <p id="cart-count" class="font-bold"></p>
+                    <p id="cart-total" class="font-bold text-blue-600 text-lg mt-2"></p>
+                    <div id="cart-items" class="mt-4 space-y-2"></div>
+                    <p id="toast" class="fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg opacity-0 transition"></p>
+                    <button id="clear-cart" 
+                        class="w-full cursor-pointer
+                         bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition mt-3">
+                        Clear Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
